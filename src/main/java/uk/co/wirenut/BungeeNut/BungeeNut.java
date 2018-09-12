@@ -62,6 +62,4 @@ public class BungeeNut extends Plugin {
 	    BungeeNut.instance = instance;
     }
 
-
-
 }
