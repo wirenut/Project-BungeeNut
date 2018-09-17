@@ -11,12 +11,11 @@ public class db {
     Connection connection = null;
 
     public db(){
-
-        final String mysqlHost = (String) BungeeNut.getInstance().configuration.get("mysql.host");
-        final String mysqlUser = (String) BungeeNut.getInstance().configuration.get("mysql.username");
-        final String mysqlPass = (String) BungeeNut.getInstance().configuration.get("mysql.password");
-        final String mysqlDB = (String) BungeeNut.getInstance().configuration.get("mysql.database");
-        final Integer mysqlPort = (int) BungeeNut.getInstance().configuration.get("mysql.port");
+        final String mysqlHost = (String) BungeeNut.getInstance().config.get("mysql.host");
+        final String mysqlUser = (String) BungeeNut.getInstance().config.get("mysql.username");
+        final String mysqlPass = (String) BungeeNut.getInstance().config.get("mysql.password");
+        final String mysqlDB = (String) BungeeNut.getInstance().config.get("mysql.database");
+        final Integer mysqlPort = (int) BungeeNut.getInstance().config.get("mysql.port");
 
         final String connectionURL = "jdbc:mysql://" + mysqlHost + ":" + mysqlPort + "/" + mysqlDB;
 
@@ -32,7 +31,7 @@ public class db {
         ResultSet allResults;
 
 
-        HashMap<String, String> result = null;
+        HashMap<String, String> result;
 
         ArrayList results = new ArrayList();
 
@@ -43,7 +42,6 @@ public class db {
 
             Integer columnsCount = allResults.getMetaData().getColumnCount();
 
-            //results = new HashMap<String, String>();
 
             while (allResults.next()) {
                 result = new HashMap<String, String>();
@@ -66,6 +64,16 @@ public class db {
 
         return results;
 
+    }
+
+    public void insert(String sql){
+        Statement query;
+        try {
+            query = connection.createStatement();
+            query.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
