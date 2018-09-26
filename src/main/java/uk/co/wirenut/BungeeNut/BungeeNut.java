@@ -2,10 +2,12 @@ package uk.co.wirenut.BungeeNut;
 
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
-import uk.co.wirenut.BungeeNut.Commands.CommandBan;
-import uk.co.wirenut.BungeeNut.Commands.CommandLobby;
+import uk.co.wirenut.BungeeNut.commands.ban;
+import uk.co.wirenut.BungeeNut.commands.hub;
+import uk.co.wirenut.BungeeNut.commands.vanilla;
 import uk.co.wirenut.BungeeNut.configuration.config;
 import uk.co.wirenut.BungeeNut.configuration.players;
+import uk.co.wirenut.BungeeNut.configuration.PostLogin;
 
 
 public class BungeeNut extends Plugin {
@@ -22,12 +24,13 @@ public class BungeeNut extends Plugin {
 
 
 
-        //Commands
-		getProxy().getPluginManager().registerCommand(this, new CommandLobby());
-        getProxy().getPluginManager().registerCommand(this, new CommandBan());
+        //commands
+		getProxy().getPluginManager().registerCommand(this, new hub());
+        getProxy().getPluginManager().registerCommand(this, new vanilla());
+        getProxy().getPluginManager().registerCommand(this, new ban());
 
 		//Listeners
-        getProxy().getPluginManager().registerListener(this, new Events());
+        getProxy().getPluginManager().registerListener(this, new PostLogin());
 
 	}
 

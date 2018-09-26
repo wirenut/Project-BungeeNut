@@ -1,19 +1,18 @@
-package uk.co.wirenut.BungeeNut.ban;
+package uk.co.wirenut.BungeeNut.events;
 
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.PostLoginEvent;
-import uk.co.wirenut.BungeeNut.BungeeNut;
 import uk.co.wirenut.BungeeNut.SQL.db;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Check {
+public class banCheck {
 
 
 
-    public Check(PostLoginEvent event, String player) {
+    public banCheck(PostLoginEvent event, String player) {
 
         String sql = "SELECT * FROM bans WHERE uuid = '" + player + "';";
 

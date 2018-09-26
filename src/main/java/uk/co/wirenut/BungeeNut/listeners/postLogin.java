@@ -1,16 +1,18 @@
-package uk.co.wirenut.BungeeNut;
+package uk.co.wirenut.BungeeNut.listeners;
 
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 import net.md_5.bungee.event.EventHandler;
-import uk.co.wirenut.BungeeNut.ban.Check;
+import uk.co.wirenut.BungeeNut.BungeeNut;
+import uk.co.wirenut.BungeeNut.events.banCheck;
+import uk.co.wirenut.BungeeNut.events.discordCheck;
 
 import java.io.File;
 import java.io.IOException;
 
-public class Events implements Listener {
+public class postLogin implements Listener {
 
     @EventHandler
     public void onPostLogin(PostLoginEvent event) {
@@ -19,7 +21,8 @@ public class Events implements Listener {
 
         String player = event.getPlayer().getName();
 
-        new Check(event, playerUUID);
+        new banCheck(event, playerUUID);
+        new discordCheck(event, playerUUID);
 
         try {
 

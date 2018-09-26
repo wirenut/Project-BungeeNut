@@ -1,4 +1,4 @@
-package uk.co.wirenut.BungeeNut.Commands;
+package uk.co.wirenut.BungeeNut.commands;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -6,12 +6,12 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.plugin.Command;
 import uk.co.wirenut.BungeeNut.BungeeNut;
 import uk.co.wirenut.BungeeNut.SQL.db;
-import uk.co.wirenut.BungeeNut.methods.uuid;
+import uk.co.wirenut.BungeeNut.modules.uuid;
 
-public class CommandBan extends Command {
+public class ban extends Command {
 
 
-    public CommandBan() {
+    public ban() {
         super("ban");
 
     }

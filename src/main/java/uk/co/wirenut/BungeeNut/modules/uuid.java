@@ -1,4 +1,4 @@
-package uk.co.wirenut.BungeeNut.methods;
+package uk.co.wirenut.BungeeNut.modules;
 
 import uk.co.wirenut.BungeeNut.BungeeNut;
 

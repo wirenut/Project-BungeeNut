@@ -1,4 +1,4 @@
-package uk.co.wirenut.BungeeNut.Commands;
+package uk.co.wirenut.BungeeNut.commands;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -8,10 +8,10 @@ import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
-public class CommandLobby extends Command {
+public class vanilla extends Command {
 
-	public CommandLobby() {
-		super("lobby");
+	public vanilla() {
+		super("vanilla");
 		
 	}
 	
@@ -35,10 +35,10 @@ public class CommandLobby extends Command {
 			if(targetPlayer == null) {
 				sender.sendMessage(new ComponentBuilder("You do not have permission to run this command!").color(ChatColor.RED).create());
 			} else {
-				if(targetPlayer.getServer().getInfo().getName().equalsIgnoreCase("lobby")) {
-					targetPlayer.sendMessage(new ComponentBuilder("You are already connected to the Hub!").color(ChatColor.RED).create());
+				if(targetPlayer.getServer().getInfo().getName().equalsIgnoreCase("vanilla")) {
+					targetPlayer.sendMessage(new ComponentBuilder("You are already connected to the Vanilla world!").color(ChatColor.RED).create());
 				} else {
-					ServerInfo targetServer = ProxyServer.getInstance().getServerInfo("Hub");
+					ServerInfo targetServer = ProxyServer.getInstance().getServerInfo("Vanilla");
 					targetPlayer.connect(targetServer);
 				}
 			}
