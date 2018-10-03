@@ -1,5 +1,9 @@
 package uk.co.wirenut.BungeeNut.listeners;
 
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.Title;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.config.ConfigurationProvider;
@@ -21,18 +25,28 @@ public class postLogin implements Listener {
 
         String player = event.getPlayer().getName();
 
-        new banCheck(event, playerUUID);
-        new discordCheck(event, playerUUID);
+        //new banCheck(event, playerUUID);
+        //new discordCheck(event, playerUUID);
 
         try {
 
-            BungeeNut.getInstance().playersCache.set(player.toLowerCase(), playerUUID);
+            BungeeNut.getInstance().playersCache.set(playerUUID, player.toLowerCase());
 
             ConfigurationProvider.getProvider(YamlConfiguration.class).save(BungeeNut.getInstance().playersCache, new File(BungeeNut.getInstance().getDataFolder(), "players.yml"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        ProxyServer.getInstance().createTitle()
+                .title(new ComponentBuilder("Welcome " + player)
+                        .color(ChatColor.GOLD).create())
+                .subTitle(new ComponentBuilder("Line 1")
+                        .color(ChatColor.YELLOW).create())
+                .fadeIn(20)
+                .stay(100)
+                .fadeOut(20)
+                .send(event.getPlayer());
 
 
     }

@@ -7,7 +7,7 @@ import uk.co.wirenut.BungeeNut.commands.hub;
 import uk.co.wirenut.BungeeNut.commands.vanilla;
 import uk.co.wirenut.BungeeNut.configuration.config;
 import uk.co.wirenut.BungeeNut.configuration.players;
-import uk.co.wirenut.BungeeNut.configuration.PostLogin;
+import uk.co.wirenut.BungeeNut.listeners.postLogin;
 
 
 public class BungeeNut extends Plugin {
@@ -30,7 +30,7 @@ public class BungeeNut extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new ban());
 
 		//Listeners
-        getProxy().getPluginManager().registerListener(this, new PostLogin());
+        getProxy().getPluginManager().registerListener(this, new postLogin());
 
 	}
 
